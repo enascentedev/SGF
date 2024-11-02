@@ -1,0 +1,14 @@
+Options -Indexes
+RewriteEngine On
+
+# Redireciona URLs amigáveis para seus respectivos arquivos PHP
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^usuario/register$ usuario.php?action=register [QSA,L]
+RewriteRule ^usuario/login$ usuario.php?action=login [QSA,L]
+RewriteRule ^conta/pagar$ conta.php?action=pagar [QSA,L]
+RewriteRule ^conta/receber$ conta.php?action=receber [QSA,L]
+RewriteRule ^cartao/comprar$ cartao_credito.php?action=comprar [QSA,L]
+RewriteRule ^relatorio/despesas$ relatorio.php?tipo=despesas_por_categoria [QSA,L]
+RewriteRule ^relatorio/saldo$ relatorio.php?tipo=saldo_contas [QSA,L]
+RewriteRule ^relatorio/transacoes$ relatorio.php?tipo=transacoes_cartao [QSA,L]

@@ -1,0 +1,157 @@
+1. Registro de Usuário
+URL: /usuario/register
+Método: POST
+Descrição: Registra um novo usuário no sistema.
+Corpo da Requisição:
+json
+Copiar código
+{
+    "username": "usuario_teste",
+    "password": "senha_teste"
+}
+Respostas:
+200 OK:
+json
+Copiar código
+{
+    "message": "Usuário registrado com sucesso"
+}
+400 Bad Request: Se faltar algum parâmetro ou o usuário já existir.
+json
+Copiar código
+{
+    "message": "Erro ao registrar usuário"
+}
+2. Login de Usuário
+URL: /usuario/login
+Método: POST
+Descrição: Autentica o usuário e retorna um token JWT.
+Corpo da Requisição:
+json
+Copiar código
+{
+    "username": "usuario_teste",
+    "password": "senha_teste"
+}
+Respostas:
+200 OK:
+json
+Copiar código
+{
+    "message": "Login bem-sucedido",
+    "token": "jwt_token"
+}
+401 Unauthorized: Se as credenciais forem inválidas.
+json
+Copiar código
+{
+    "message": "Credenciais inválidas"
+}
+3. Registrar Conta a Pagar
+URL: /conta/pagar
+Método: POST
+Descrição: Registra uma nova conta a pagar.
+Cabeçalho:
+Authorization: Bearer <jwt_token>
+Corpo da Requisição:
+json
+Copiar código
+{
+    "descricao": "Conta de luz",
+    "valor": 150.00,
+    "data_vencimento": "2024-11-30",
+    "categoria": "moradia",
+    "status": "pendente"
+}
+Respostas:
+200 OK:
+json
+Copiar código
+{
+    "message": "Conta a pagar registrada com sucesso"
+}
+400 Bad Request: Se faltar algum parâmetro obrigatório.
+json
+Copiar código
+{
+    "message": "Erro ao registrar conta a pagar"
+}
+4. Registrar Conta a Receber
+URL: /conta/receber
+Método: POST
+Descrição: Registra uma nova conta a receber.
+Cabeçalho:
+Authorization: Bearer <jwt_token>
+Corpo da Requisição:
+json
+Copiar código
+{
+    "descricao": "Salário",
+    "valor": 5000.00,
+    "data_recebimento": "2024-11-30",
+    "categoria": "renda",
+    "status": "pendente"
+}
+Respostas:
+200 OK:
+json
+Copiar código
+{
+    "message": "Conta a receber registrada com sucesso"
+}
+400 Bad Request:
+json
+Copiar código
+{
+    "message": "Erro ao registrar conta a receber"
+}
+5. Registrar Compra com Cartão de Crédito
+URL: /cartao/comprar
+Método: POST
+Descrição: Registra uma compra feita com cartão de crédito.
+Cabeçalho:
+Authorization: Bearer <jwt_token>
+Corpo da Requisição:
+json
+Copiar código
+{
+    "descricao": "Supermercado",
+    "valor": 300.00,
+    "data_compra": "2024-11-25",
+    "categoria": "alimentação",
+    "cartao_utilizado": "Cartão Visa",
+    "parcelas": 3
+}
+Respostas:
+200 OK:
+json
+Copiar código
+{
+    "message": "Compra registrada com sucesso"
+}
+400 Bad Request:
+json
+Copiar código
+{
+    "message": "Erro ao registrar compra com cartão"
+}
+6. Gerar Relatório de Despesas por Categoria
+URL: /relatorio/despesas
+Método: GET
+Descrição: Gera um relatório de despesas mensais categorizadas.
+Cabeçalho:
+Authorization: Bearer <jwt_token>
+Respostas:
+200 OK:
+json
+Copiar código
+{
+    "categoria": "alimentação",
+    "total": 450.00
+}
+403 Forbidden: Se o token não for válido.
+json
+Copiar código
+{
+    "message": "Token inválido"
+}

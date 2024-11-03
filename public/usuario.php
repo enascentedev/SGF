@@ -2,12 +2,8 @@
 include_once __DIR__ . '/../src/config/db.php';
 include_once __DIR__ . '/../src/controllers/UsuarioController.php';
 
-// Define os cabeçalhos para retorno JSON
-header("Content-Type: application/json; charset=UTF-8");
-
 // Instancia o controlador de usuário
 $controller = new UsuarioController();
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 	http_response_code(200);

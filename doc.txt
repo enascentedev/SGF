@@ -1,3 +1,6 @@
+docker-compose down
+docker-compose up --build
+
 1. Registro de Usuário
 URL: /usuario/register
 Método: POST

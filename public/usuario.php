@@ -8,6 +8,11 @@ header("Content-Type: application/json; charset=UTF-8");
 // Instancia o controlador de usuário
 $controller = new UsuarioController();
 
+
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+	http_response_code(200);
+	exit();
+}
 // Verifica o método de requisição e a ação
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action'])) {
     $data = json_decode(file_get_contents("php://input"), true);

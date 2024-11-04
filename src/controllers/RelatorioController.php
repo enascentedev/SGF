@@ -1,7 +1,8 @@
 <?php
-include_once '../config/db.php';
-include_once '../models/Relatorio.php';
-include_once '../middleware/auth.php';
+include_once __DIR__ . '/../config/db.php';
+include_once __DIR__ . '/../models/Relatorio.php';
+include_once __DIR__ . '/../middleware/auth.php';
+
 
 class RelatorioController {
     private $db;
